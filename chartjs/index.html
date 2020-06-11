@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Chartjs</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/node_modules/chart.js/dist/Chart.min.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                <canvas id="line"></canvas>
+            </div>
+            <div class="col-sm-6">
+                <canvas id="bar"></canvas>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <canvas id="radar"></canvas>
+            </div>
+            <div class="col-sm-6">
+                <canvas id="doughnut"></canvas>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <canvas id="bar-client"></canvas>
+            </div>
+            <div class="col-sm-6">
+                <!-- <canvas id="doughnut"></canvas> -->
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/node_modules/chart.js/dist/Chart.min.js"></script>
+    <script src="/chartjs/utisl.js"></script>
+    <script src="/chartjs/line-chart.js"></script>
+    <script src="/chartjs/bar-chart.js"></script>
+    <script src="/chartjs/radar.js"></script>
+    <script src="/chartjs/doughnut.js"></script>
+    <script src="/chartjs/bar-line.js"></script>
+    <script>
+        window.onload = function () {
+            var lineChart = document.getElementById('line').getContext('2d');
+            var barChart = document.getElementById('bar').getContext('2d');
+            var radar = document.getElementById('radar').getContext('2d');
+            var doughnut = document.getElementById('doughnut').getContext('2d');
+            var barLine = document.getElementById('bar-client').getContext('2d');
+            new Chart(lineChart, configLine);
+            new Chart(barChart, configBar);
+            new Chart(radar, configRadar);
+            new Chart(doughnut, configDoughnut);
+            new Chart(barLine, {
+                type: 'bar',
+                data: chartData,
+                options: {
+                    responsive: true,
+                    title: {
+                        display: true,
+                        text: 'Chart.js Combo Bar Line Chart'
+                    },
+                    tooltips: {
+                        mode: 'index',
+                        intersect: true
+                    }
+                }
+            });
+        };
+    </script>
+</body>
+
+</html>
